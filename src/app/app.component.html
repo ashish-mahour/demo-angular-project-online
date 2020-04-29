@@ -30,3 +30,5 @@
 </div>
 <canvas *ngIf="video" id="canvas1"></canvas>
 <button *ngIf="video" (click)="takePhoto()" type="button">Click</button>
+{{ currentDate | date:"medium"}} <br>
+{{ utcDate | date:"medium"}}

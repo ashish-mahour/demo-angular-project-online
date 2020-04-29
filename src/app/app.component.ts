@@ -47,17 +47,18 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.safeUrl = "data:application/pdf;base64,";
-    // this.getUTC()
+    this.getUTC();
     // this.setUpCamera();
     // this.startTimer((60*2));
     // this.startTimerByZone((60*2));
   }
 
+  currentDate: Date = new Date();
+  utcDate: Date = new Date()
   getUTC() {
-    const date = new Date()
-    console.log(date.toLocaleString())
-    const utc = new Date(date.getTime() + (date.getTimezoneOffset() * 60000));
-    console.log(utc.toLocaleString())
+    this.utcDate.setMinutes(this.utcDate.getMinutes() + this.currentDate.getTimezoneOffset())
+    console.log("Current Date: " + this.currentDate.toLocaleString());
+    console.log("UTC Date: " + this.utcDate.toLocaleString());
   }
 
   setUpCamera() {
@@ -127,5 +128,4 @@ export class AppComponent implements OnInit {
     this.slideLeft = event.center.x;
     this.changeState = true;
   }
-
 }
