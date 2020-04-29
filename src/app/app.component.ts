@@ -50,7 +50,6 @@ export class AppComponent implements OnInit {
     // this.setUpCamera();
     // this.startTimer((60*2));
     // this.startTimerByZone((60*2));
-    
   }
 
   setUpCamera() {
@@ -73,9 +72,9 @@ export class AppComponent implements OnInit {
   takePhoto() {
     const canvas = document.getElementById("canvas1") as HTMLCanvasElement;
     canvas.height = this.video.videoHeight;
-    canvas.width =  this.video.videoWidth
+    canvas.width = this.video.videoWidth;
     const context = canvas.getContext("2d");
-    context.clearRect(0, 0, canvas.width, canvas.height)
+    context.clearRect(0, 0, canvas.width, canvas.height);
     context.drawImage(
       this.video,
       0,
@@ -115,9 +114,10 @@ export class AppComponent implements OnInit {
     }, 1000);
   }
   onPress(event: any, element: HTMLElement) {
-    element.style.border = "none"
+    element.style.border = "none";
     this.name = ", You are swiping!!";
     this.slideLeft = event.center.x;
     this.changeState = true;
   }
+
 }

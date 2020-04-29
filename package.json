@@ -19,6 +19,8 @@
     "@angular/router": "7.2.15",
     "@ionic/angular": "4.11.1",
     "@ng-bootstrap/ng-bootstrap": "4.2.2",
+    "@types/chartjs": "^0.0.31",
+    "chartjs": "^0.3.24",
     "core-js": "2.6.10",
     "hammerjs": "2.0.8",
     "rxjs": "6.5.3",
