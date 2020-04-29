@@ -47,9 +47,17 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.safeUrl = "data:application/pdf;base64,";
+    // this.getUTC()
     // this.setUpCamera();
     // this.startTimer((60*2));
     // this.startTimerByZone((60*2));
+  }
+
+  getUTC() {
+    const date = new Date()
+    console.log(date.toLocaleString())
+    const utc = new Date(date.getTime() + (date.getTimezoneOffset() * 60000));
+    console.log(utc.toLocaleString())
   }
 
   setUpCamera() {
