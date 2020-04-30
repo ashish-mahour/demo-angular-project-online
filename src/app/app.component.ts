@@ -57,6 +57,8 @@ export class AppComponent implements OnInit {
   utcDate: Date = new Date()
   getUTC() {
     this.utcDate.setMinutes(this.utcDate.getMinutes() + this.currentDate.getTimezoneOffset())
+    console.log(new Date("2020-04-30 12:00:00").toLocaleString("en-US", {timeZone: "Asia/Calcutta"}))
+    console.log(new Date(new Date("2020-04-29T12:00:00.000Z") + "UTC")) 
     console.log("Current Date: " + this.currentDate.toLocaleString());
     console.log("UTC Date: " + this.utcDate.toLocaleString());
   }
