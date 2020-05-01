@@ -9,6 +9,7 @@ import {
   state,
   animate
 } from "@angular/animations";
+import * as moment from "moment"
 
 @Component({
   selector: "my-app",
@@ -59,14 +60,23 @@ export class AppComponent implements OnInit {
     this.utcDate.setMinutes(
       this.utcDate.getMinutes() + this.currentDate.getTimezoneOffset()
     );
-    console.log(
-      new Date("2020-04-30 12:00:00").toLocaleString("en-US", {
-        timeZone: "Asia/Calcutta"
-      })
-    );
-    console.log(new Date(new Date("2020-04-29T12:00:00.000Z") + "UTC"));
-    console.log("Current Date: " + this.currentDate.toLocaleString());
-    console.log("UTC Date: " + this.utcDate.toLocaleString());
+    console.log(Intl.DateTimeFormat().resolvedOptions().timeZone);
+    // const utc = new Date(new Date("2020-04-20 17:30:00").toLocaleString("en-US", { timeZone: "Asia/Calcutta" }));
+    const utc = new Date("5/6/2020, 5:30:00 PM")
+    // const utc = new Date("2020-05-06T12:00:00.000Z")
+    const local = new Date(utc.toString());
+    console.log(local.toString());
+    console.log(utc.toLocaleString());
+    console.log(utc.toUTCString());
+    console.log(utc.toISOString());
+    console.log(moment())
+
+    // const dateByTimeZone = new Date(
+    //   utc.toLocaleString("en-US", { timeZone: "Asia/Calcutta" })
+    // );
+    // console.log(dateByTimeZone);
+    // console.log("Current Date: " + this.currentDate.toLocaleString());
+    // console.log("UTC Date: " + this.utcDate.toLocaleString());
   }
 
   setUpCamera() {
