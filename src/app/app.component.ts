@@ -70,11 +70,13 @@ export class AppComponent implements OnInit {
     // console.log(utc.toUTCString());
     // console.log(utc.toISOString());
     const date1 = "2020-04-20 12:00:00"
-    const date2 = "2020-04-22 13:00:00"
-    const dateByTimeZone = moment(date1).tz("Asia/Calcutta").format()
-    console.log(moment.utc(date1))
-    console.log(dateByTimeZone)
-    console.log(moment(date1).tz("Asia/Calcutta"))
+    const date2 = "2020-04-22 13:00:00"   
+    const dateMoment = moment.utc(date1)
+    console.log(dateMoment.toISOString())
+    const offset = moment().tz("Asia/Calcutta").utcOffset()
+    dateMoment.set({minute: dateMoment.minute() - offset})
+    console.log(dateMoment.toISOString(), offset)
+    console.log(new Date(dateMoment.toISOString()).toLocaleString())    
 
     // const dateByTimeZone = new Date(
     //   utc.toLocaleString("en-US", { timeZone: "Asia/Calcutta" })
