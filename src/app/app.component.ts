@@ -75,7 +75,7 @@ export class AppComponent implements OnInit {
     console.log(dateMoment.toISOString())
     const offset = moment().tz("Asia/Calcutta").utcOffset()
     dateMoment.set({minute: dateMoment.minute() - offset})
-    console.log(dateMoment.toISOString(), offset)
+    console.log(dateMoment.toISOString(), offset) 
     console.log(new Date(dateMoment.toISOString()).toLocaleString())    
 
     // const dateByTimeZone = new Date(
