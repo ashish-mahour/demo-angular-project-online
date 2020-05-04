@@ -9,7 +9,7 @@ import {
   state,
   animate
 } from "@angular/animations";
-import * as moment from "moment"
+import moment from "moment-timezone"
 
 @Component({
   selector: "my-app",
@@ -62,14 +62,19 @@ export class AppComponent implements OnInit {
     );
     console.log(Intl.DateTimeFormat().resolvedOptions().timeZone);
     // const utc = new Date(new Date("2020-04-20 17:30:00").toLocaleString("en-US", { timeZone: "Asia/Calcutta" }));
-    const utc = new Date("5/6/2020, 5:30:00 PM")
+    // const utc = new Date("5/6/2020, 5:30:00 PM")
     // const utc = new Date("2020-05-06T12:00:00.000Z")
-    const local = new Date(utc.toString());
-    console.log(local.toString());
-    console.log(utc.toLocaleString());
-    console.log(utc.toUTCString());
-    console.log(utc.toISOString());
-    console.log(moment())
+    // const local = new Date(utc.toString());
+    // console.log(local.toString());
+    // console.log(utc.toLocaleString());
+    // console.log(utc.toUTCString());
+    // console.log(utc.toISOString());
+    const date1 = "2020-04-20 12:00:00"
+    const date2 = "2020-04-22 13:00:00"
+    const dateByTimeZone = moment(date1).tz("Asia/Calcutta").format()
+    console.log(moment.utc(date1))
+    console.log(dateByTimeZone)
+    console.log(moment(date1).tz("Asia/Calcutta"))
 
     // const dateByTimeZone = new Date(
     //   utc.toLocaleString("en-US", { timeZone: "Asia/Calcutta" })
