@@ -52,6 +52,30 @@ export class AppComponent implements OnInit {
     // this.setUpCamera();
     // this.startTimer((60*2));
     // this.startTimerByZone((60*2));
+    let result = []
+    const a= [2,3,5]
+    const b = [1,3,4]
+    for(let i = 0; i < b.length; i++) {
+      result.push({height:b[i], type: "g"})
+    }
+    for(let i = 0; i < a.length; i++) {
+      result.push({height:a[i], type: "b"})
+    }
+    for(let i = 0; i < result.length - 2; i++) {
+      if(result[i].type === result[i+ 1].type && result[i + 1].height === result[i+ 2].height) {
+        let temp = result[i + 1].type
+        result[i + 1].type = result[i + 2].type
+        result[i + 2].type = temp
+      }
+    }
+    console.log(result)
+    for(let i = 0; i < result.length - 2; i++) {
+      if(result[i].type === result[i+ 1].type || result[i+1].type === result[i+ 2].type) {
+        console.log("NO")
+        break
+      }
+    }
+    console.log("YES")
   }
 
   currentDate: Date = new Date();
