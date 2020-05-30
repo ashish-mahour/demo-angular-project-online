@@ -53,29 +53,44 @@ export class AppComponent implements OnInit {
     // this.startTimer((60*2));
     // this.startTimerByZone((60*2));
     let result = []
-    const a= [2,3,5]
-    const b = [1,3,4]
-    for(let i = 0; i < b.length; i++) {
-      result.push({height:b[i], type: "g"})
-    }
-    for(let i = 0; i < a.length; i++) {
-      result.push({height:a[i], type: "b"})
-    }
-    for(let i = 0; i < result.length - 2; i++) {
-      if(result[i].type === result[i+ 1].type && result[i + 1].height === result[i+ 2].height) {
-        let temp = result[i + 1].type
-        result[i + 1].type = result[i + 2].type
-        result[i + 2].type = temp
-      }
-    }
+    const a=   [3,6,4] 
+    const b = [3,6,5]
+    a.forEach(x=> {
+      result.push({height: x, type:"b"})
+    }) 
+    b.forEach(x=> {
+      result.push({height: x, type:"g"})
+    })
+    
     console.log(result)
-    for(let i = 0; i < result.length - 2; i++) {
-      if(result[i].type === result[i+ 1].type || result[i+1].type === result[i+ 2].type) {
-        console.log("NO")
-        break
+    result.sort((a, b)=> {
+      return b.height > a.height? -1: 1
+    })
+    for(let i = 0; i < result.length - 1; i++) {
+      if(i != 0 && result[i].height === result[i+1].height && (result[i - 1].type === result[i].type || result[i].type === result[i + 1].type)) {
+        let temp = JSON.parse(JSON.stringify(result[i+ 1]))
+        result[i+1] = JSON.parse(JSON.stringify(result[i]))
+        result[i] = temp
       }
     }
-    console.log("YES")
+    // result = this.sort(result)
+
+    console.log(result)
+   
+  }
+
+  sort(sortArray: any[]) {
+    let a = []
+    for(let i = 0; i < sortArray.length - 1 ; i++) {
+      if(i !== 0 && sortArray[i].height === sortArray[i + 1].height){
+      
+      } else if(sortArray[i].height > sortArray[i+1].height) {
+        a.push(sortArray[i+1].height)
+      } else {
+        a.push(sortArray[i].height)
+      }
+    }
+    return a;
   }
 
   currentDate: Date = new Date();
