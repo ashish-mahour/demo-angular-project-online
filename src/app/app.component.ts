@@ -63,7 +63,7 @@ export class AppComponent implements OnInit {
     });
     a.every(x => {
       if (x === 6) {
-        return;
+        return false;
       }
       console.log("B", x);
     });
