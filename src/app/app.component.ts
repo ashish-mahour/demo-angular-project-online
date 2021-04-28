@@ -9,7 +9,7 @@ import {
   state,
   animate
 } from "@angular/animations";
-import moment from "moment-timezone"
+import moment from "moment-timezone";
 
 @Component({
   selector: "my-app",
@@ -52,42 +52,52 @@ export class AppComponent implements OnInit {
     // this.setUpCamera();
     // this.startTimer((60*2));
     // this.startTimerByZone((60*2));
-    let result = []
-    const a=   [3,6,4] 
-    const b = [3,6,5]
-    a.forEach(x=> {
-      result.push({height: x, type:"b"})
-    }) 
-    b.forEach(x=> {
-      result.push({height: x, type:"g"})
-    })
-    
-    console.log(result)
-    result.sort((a, b)=> {
-      return b.height > a.height? -1: 1
-    })
-    for(let i = 0; i < result.length - 1; i++) {
-      if(i != 0 && result[i].height === result[i+1].height && (result[i - 1].type === result[i].type || result[i].type === result[i + 1].type)) {
-        let temp = JSON.parse(JSON.stringify(result[i+ 1]))
-        result[i+1] = JSON.parse(JSON.stringify(result[i]))
-        result[i] = temp
+    let result = [];
+    const a = [3, 6, 4];
+    const b = [3, 6, 5];
+    a.every(x => {
+      if (x === 3) {
+        return false;
+      }
+      console.log("A", x);
+      return true
+    });
+    a.forEach(x => {
+      result.push({ height: x, type: "b" });
+    });
+    b.forEach(x => {
+      result.push({ height: x, type: "g" });
+    });
+
+    console.log(result);
+    result.sort((a, b) => {
+      return b.height > a.height ? -1 : 1;
+    });
+    for (let i = 0; i < result.length - 1; i++) {
+      if (
+        i != 0 &&
+        result[i].height === result[i + 1].height &&
+        (result[i - 1].type === result[i].type ||
+          result[i].type === result[i + 1].type)
+      ) {
+        let temp = JSON.parse(JSON.stringify(result[i + 1]));
+        result[i + 1] = JSON.parse(JSON.stringify(result[i]));
+        result[i] = temp;
       }
     }
     // result = this.sort(result)
 
-    console.log(result)
-   
+    console.log(result);
   }
 
   sort(sortArray: any[]) {
-    let a = []
-    for(let i = 0; i < sortArray.length - 1 ; i++) {
-      if(i !== 0 && sortArray[i].height === sortArray[i + 1].height){
-      
-      } else if(sortArray[i].height > sortArray[i+1].height) {
-        a.push(sortArray[i+1].height)
+    let a = [];
+    for (let i = 0; i < sortArray.length - 1; i++) {
+      if (i !== 0 && sortArray[i].height === sortArray[i + 1].height) {
+      } else if (sortArray[i].height > sortArray[i + 1].height) {
+        a.push(sortArray[i + 1].height);
       } else {
-        a.push(sortArray[i].height)
+        a.push(sortArray[i].height);
       }
     }
     return a;
@@ -108,14 +118,16 @@ export class AppComponent implements OnInit {
     // console.log(utc.toLocaleString());
     // console.log(utc.toUTCString());
     // console.log(utc.toISOString());
-    const date1 = "2020-04-20 12:00:00"
-    const date2 = "2020-04-22 13:00:00"   
-    const dateMoment = moment.utc(date1)
-    console.log(dateMoment.toISOString())
-    const offset = moment().tz("Asia/Calcutta").utcOffset()
-    dateMoment.set({minute: dateMoment.minute() - offset})
-    console.log(dateMoment.toISOString(), offset) 
-    console.log(new Date(dateMoment.toISOString()).toLocaleString())    
+    const date1 = "2020-04-20 12:00:00";
+    const date2 = "2020-04-22 13:00:00";
+    const dateMoment = moment.utc(date1);
+    console.log(dateMoment.toISOString());
+    const offset = moment()
+      .tz("Asia/Calcutta")
+      .utcOffset();
+    dateMoment.set({ minute: dateMoment.minute() - offset });
+    console.log(dateMoment.toISOString(), offset);
+    console.log(new Date(dateMoment.toISOString()).toLocaleString());
 
     // const dateByTimeZone = new Date(
     //   utc.toLocaleString("en-US", { timeZone: "Asia/Calcutta" })
