@@ -55,12 +55,17 @@ export class AppComponent implements OnInit {
     let result = [];
     const a = [3, 6, 4];
     const b = [3, 6, 5];
-    a.every(x => {
-      if (x === 3) {
-        return false;
+    a.forEach(x => {
+      if (x === 6) {
+        return;
       }
       console.log("A", x);
-      return true
+    });
+    a.every(x => {
+      if (x === 6) {
+        return;
+      }
+      console.log("B", x);
     });
     a.forEach(x => {
       result.push({ height: x, type: "b" });
