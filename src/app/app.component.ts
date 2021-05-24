@@ -1,37 +1,37 @@
-import { Component, NgZone, OnInit } from "@angular/core";
-import { statesArray } from "./states";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs/Observable";
+import { Component, NgZone, OnInit } from '@angular/core';
+import { statesArray } from './states';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 import {
   trigger,
   transition,
   style,
   state,
   animate
-} from "@angular/animations";
-import moment from "moment-timezone";
+} from '@angular/animations';
+import moment from 'moment-timezone';
 
 @Component({
-  selector: "my-app",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"],
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
   animations: [
-    trigger("slideAnimation", [
+    trigger('slideAnimation', [
       state(
-        "slideX",
+        'slideX',
         style({ transform: "transformX('{{transformXValue}}' + 'px')" }),
         {
           params: { transformXValue: 0 }
         }
       ),
-      transition("* => slideX", [
-        animate("100ms", style({ transform: "transformX('0px')" }))
+      transition('* => slideX', [
+        animate('100ms', style({ transform: "transformX('0px')" }))
       ])
     ])
   ]
 })
 export class AppComponent implements OnInit {
-  name = "Ashish";
+  name = 'Ashish';
   safeUrl: string;
   minutes: any;
   seconds: any;
@@ -47,7 +47,7 @@ export class AppComponent implements OnInit {
   constructor(private http: HttpClient, private zone: NgZone) {}
 
   ngOnInit() {
-    this.safeUrl = "data:application/pdf;base64,";
+    this.safeUrl = 'data:application/pdf;base64,';
     this.getUTC();
     // this.setUpCamera();
     // this.startTimer((60*2));
@@ -59,19 +59,19 @@ export class AppComponent implements OnInit {
       if (x === 6) {
         return;
       }
-      console.log("A", x);
+      console.log('A', x);
     });
     a.every(x => {
       if (x === 6) {
         return false;
       }
-      console.log("B", x);
+      console.log('B', x);
     });
     a.forEach(x => {
-      result.push({ height: x, type: "b" });
+      result.push({ height: x, type: 'b' });
     });
     b.forEach(x => {
-      result.push({ height: x, type: "g" });
+      result.push({ height: x, type: 'g' });
     });
 
     console.log(result);
@@ -123,12 +123,12 @@ export class AppComponent implements OnInit {
     // console.log(utc.toLocaleString());
     // console.log(utc.toUTCString());
     // console.log(utc.toISOString());
-    const date1 = "2020-04-20 12:00:00";
-    const date2 = "2020-04-22 13:00:00";
+    const date1 = '2020-04-20 12:00:00';
+    const date2 = '2020-04-22 13:00:00';
     const dateMoment = moment.utc(date1);
     console.log(dateMoment.toISOString());
     const offset = moment()
-      .tz("Asia/Calcutta")
+      .tz('Asia/Calcutta')
       .utcOffset();
     dateMoment.set({ minute: dateMoment.minute() - offset });
     console.log(dateMoment.toISOString(), offset);
@@ -143,11 +143,11 @@ export class AppComponent implements OnInit {
   }
 
   setUpCamera() {
-    this.video = document.createElement("video");
+    this.video = document.createElement('video');
     navigator.mediaDevices
       .getUserMedia({
         video: {
-          facingMode: "environmemt"
+          facingMode: 'environmemt'
         },
         audio: false
       })
@@ -156,14 +156,14 @@ export class AppComponent implements OnInit {
         this.video.play();
         document.body.append(this.video);
       })
-      .catch(error => console.log("Error : ", error));
+      .catch(error => console.log('Error : ', error));
   }
 
   takePhoto() {
-    const canvas = document.getElementById("canvas1") as HTMLCanvasElement;
+    const canvas = document.getElementById('canvas1') as HTMLCanvasElement;
     canvas.height = this.video.videoHeight;
     canvas.width = this.video.videoWidth;
-    const context = canvas.getContext("2d");
+    const context = canvas.getContext('2d');
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.drawImage(
       this.video,
@@ -172,7 +172,7 @@ export class AppComponent implements OnInit {
       this.video.videoWidth,
       this.video.videoHeight
     );
-    console.log(canvas.toDataURL("image/png"));
+    console.log(canvas.toDataURL('image/png'));
   }
 
   startTimer(durationInSeconds: number): any {
@@ -180,8 +180,8 @@ export class AppComponent implements OnInit {
       this.minutes = Math.floor(durationInSeconds / 60);
       this.seconds = durationInSeconds % 60;
 
-      this.minutes = this.minutes < 10 ? "0" + this.minutes : this.minutes;
-      this.seconds = this.seconds < 10 ? "0" + this.seconds : this.seconds;
+      this.minutes = this.minutes < 10 ? '0' + this.minutes : this.minutes;
+      this.seconds = this.seconds < 10 ? '0' + this.seconds : this.seconds;
       if (--durationInSeconds < 0) {
         clearInterval(timer);
       }
@@ -194,9 +194,9 @@ export class AppComponent implements OnInit {
         this.secondsZone = durationInSeconds % 60;
 
         this.minutesZone =
-          this.minutesZone < 10 ? "0" + this.minutesZone : this.minutesZone;
+          this.minutesZone < 10 ? '0' + this.minutesZone : this.minutesZone;
         this.secondsZone =
-          this.secondsZone < 10 ? "0" + this.secondsZone : this.secondsZone;
+          this.secondsZone < 10 ? '0' + this.secondsZone : this.secondsZone;
         if (--durationInSeconds < 0) {
           clearInterval(timer);
         }
@@ -204,8 +204,8 @@ export class AppComponent implements OnInit {
     }, 1000);
   }
   onPress(event: any, element: HTMLElement) {
-    element.style.border = "none";
-    this.name = ", You are swiping!!";
+    element.style.border = 'none';
+    this.name = ', You are swiping!!';
     this.slideLeft = event.center.x;
     this.changeState = true;
   }
