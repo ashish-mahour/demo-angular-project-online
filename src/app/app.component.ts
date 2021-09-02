@@ -50,15 +50,15 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     console.log(xml2json);
-    const samlURLEncode = decodeURIComponent(
+    const samlURLDecode = decodeURIComponent(
       'vVXbbptAEP0VxDtewPi2clDT5CVSc1Fs5SEv1XoZ4q1gF%2b0sSfr3HSC%2bkNhOW1WVkMwe5nJm5ux4jqIsKn4PWBmN4F1dnvnfRR6G02iYBHkkoyDJQghW48kqGCeJGE%2biMBfJ1PcewKIy%2bsyPB6HvXSHWcKXRCe0ICuMoCGdBGC2jkEcTnkwH0%2bHo0fcuAZ3SwrWea%2bcq5Iw9K3iRwsJAmpKJqirMk9LM9y4aTk282mpuBCrkWpSA3Em%2bOL%2f%2bxik1l50RrzVWIFWuIPO917LQyNviTntX1jgjTeGn87YE27medhKIYJsS%2fLQpgSoQWY6DfhmEMDJ7VhKQOVujm7MuRTrvur5wwtXYP12YDLwHUdRwmgK21nxRSwqPvsfSOetHPd%2bQ7IY6nQxH2TQbBuNoDEESh0kwm8QQxDOI8jAWEM2GvzfG5PH98P%2bsZW%2bN%2fsvWLerVD5Bu%2b0IayZUtW0V51%2bDWJvtELyVfAaWy%2fsEYl8IJ78a4W31rz3MH9n0b4nin5nsSXKVaiX6m5WZAB9Lt0HROeKYaEBsCXyE3Fo4NIabsx1lG%2b3YkhTojkhLomjurZJd3A6Yb5hmUdBO0Ji79ebxNYOuwe%2b0FZDv%2bFN3Rh1XtoJEjlNSiPcy7oal0LaO8KNdQChyQitCIamDsE3tBFofhiNGjMnJW7ieThVAlsif1DLoZq78Xsb0x6RJann1wD%2fhXFOpKf0zuXPJl27bCSFH8DypIUj%2faC7qkoL3kNA92cFS1W%2bvt2WuPJ9fCKBp2SiND0oGDV9c%2fXRS0Au4hT09uCcllY0fwHf28GJvd0YImRUK2tII2vLGtEg%2fE7cOb415NbLsRt7ty87%2bX%2fgI%3d'
     );
-    console.log(samlURLEncode);
-    const deflated = Buffer.from(samlURLEncode, 'base64');
-    const xml = pako.inflateRaw(deflated, { to: 'string' })
-    console.log(xml);
+    console.log('URL decode', samlURLDecode);
+    const deflated = Buffer.from(samlURLDecode, 'base64');
+    const xml = pako.inflateRaw(deflated, { to: 'string' });
+    console.log("XML: ", xml);
     const json = xml2json.xml2json(xml);
-    console.log(json)
+    console.log("JSON: ", json);
   }
 
   test() {
