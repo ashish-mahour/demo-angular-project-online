@@ -11,7 +11,7 @@ import {
 } from '@angular/animations';
 import moment from 'moment-timezone';
 import * as pako from 'pako';
-import * as xml2json from 'xml-js';
+import * as saml2json from 'saml2json';
 
 @Component({
   selector: 'my-app',
@@ -56,8 +56,7 @@ export class AppComponent implements OnInit {
     const deflated = Buffer.from(samlURLDecode, 'base64');
     const xml = pako.inflateRaw(deflated, { to: 'string' });
     console.log('XML: ', xml);
-    const json = xml2json.xml2json(xml);
-    console.log('JSON: ', json);
+    console.log(saml2json.parse(window.btoa(xml)));
   }
 
   test() {
