@@ -48,7 +48,12 @@ export class AppComponent implements OnInit {
 
   constructor(private http: HttpClient, private zone: NgZone) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(Intl.DateTimeFormat().resolvedOptions())
+    console.log(Intl.NumberFormat().resolvedOptions())
+    console.log(Intl.Collator().resolvedOptions())
+
+  }
 
   samlParseToJSON() {
     const samlURLDecode = decodeURIComponent(
