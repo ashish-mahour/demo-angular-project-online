@@ -7,7 +7,7 @@ import {
   transition,
   style,
   state,
-  animate
+  animate,
 } from '@angular/animations';
 import moment from 'moment-timezone';
 import * as pako from 'pako';
@@ -23,14 +23,14 @@ import * as saml2json from 'saml2json';
         'slideX',
         style({ transform: "transformX('{{transformXValue}}' + 'px')" }),
         {
-          params: { transformXValue: 0 }
+          params: { transformXValue: 0 },
         }
       ),
       transition('* => slideX', [
-        animate('100ms', style({ transform: "transformX('0px')" }))
-      ])
-    ])
-  ]
+        animate('100ms', style({ transform: "transformX('0px')" })),
+      ]),
+    ]),
+  ],
 })
 export class AppComponent implements OnInit {
   name = 'Ashish';
@@ -49,10 +49,11 @@ export class AppComponent implements OnInit {
   constructor(private http: HttpClient, private zone: NgZone) {}
 
   ngOnInit() {
-    console.log(Intl.DateTimeFormat().resolvedOptions())
-    console.log(Intl.NumberFormat().resolvedOptions())
-    console.log(Intl.Collator().resolvedOptions())
-
+    console.log(Intl.DateTimeFormat().resolvedOptions());
+    console.log(Intl.NumberFormat().resolvedOptions());
+    console.log(Intl.Collator().resolvedOptions());
+    const key = 116;
+    console.log(String.fromCharCode(key));
   }
 
   samlParseToJSON() {
@@ -75,22 +76,22 @@ export class AppComponent implements OnInit {
     let result = [];
     const a = [3, 6, 4];
     const b = [3, 6, 5];
-    a.forEach(x => {
+    a.forEach((x) => {
       if (x === 6) {
         return;
       }
       console.log('A', x);
     });
-    a.every(x => {
+    a.every((x) => {
       if (x === 6) {
         return false;
       }
       console.log('B', x);
     });
-    a.forEach(x => {
+    a.forEach((x) => {
       result.push({ height: x, type: 'b' });
     });
-    b.forEach(x => {
+    b.forEach((x) => {
       result.push({ height: x, type: 'g' });
     });
 
@@ -147,9 +148,7 @@ export class AppComponent implements OnInit {
     const date2 = '2020-04-22 13:00:00';
     const dateMoment = moment.utc(date1);
     console.log(dateMoment.toISOString());
-    const offset = moment()
-      .tz('Asia/Calcutta')
-      .utcOffset();
+    const offset = moment().tz('Asia/Calcutta').utcOffset();
     dateMoment.set({ minute: dateMoment.minute() - offset });
     console.log(dateMoment.toISOString(), offset);
     console.log(new Date(dateMoment.toISOString()).toLocaleString());
@@ -167,16 +166,16 @@ export class AppComponent implements OnInit {
     navigator.mediaDevices
       .getUserMedia({
         video: {
-          facingMode: 'environmemt'
+          facingMode: 'environmemt',
         },
-        audio: false
+        audio: false,
       })
       .then((stream: MediaStream) => {
         this.video.srcObject = stream;
         this.video.play();
         document.body.append(this.video);
       })
-      .catch(error => console.log('Error : ', error));
+      .catch((error) => console.log('Error : ', error));
   }
 
   takePhoto() {
