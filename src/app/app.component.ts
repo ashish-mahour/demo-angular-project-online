@@ -12,6 +12,12 @@ import {
 import moment from 'moment-timezone';
 import * as pako from 'pako';
 import * as saml2json from 'saml2json';
+import { AnyAaaaRecord } from 'node:dns';
+
+const systemConsole = console.log;
+console.log = (...data: any) => {
+  systemConsole(new Date().toISOString(), data);
+};
 
 @Component({
   selector: 'my-app',
@@ -53,7 +59,7 @@ export class AppComponent implements OnInit {
     console.log(Intl.NumberFormat().resolvedOptions());
     console.log(Intl.Collator().resolvedOptions());
     const key = 116;
-    console.log(String.fromCharCode(key));
+    console.log(String.fromCharCode(key), 'XYZ');
   }
 
   samlParseToJSON() {

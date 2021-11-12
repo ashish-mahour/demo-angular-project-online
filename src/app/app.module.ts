@@ -1,14 +1,14 @@
-import { NgModule } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
-import { FormsModule } from "@angular/forms";
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
-import { AppComponent } from "./app.component";
-import { HelloComponent } from "./hello.component";
-import { SafePipe, FilterPipe } from "./global.pipe";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MatButtonModule, MatCheckboxModule } from "@angular/material";
-import { FlexLayoutModule } from "@angular/flex-layout";
-import { HttpClientModule } from "@angular/common/http";
+import { AppComponent } from './app.component';
+import { HelloComponent } from './hello.component';
+import { SafePipe, FilterPipe } from './global.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -19,10 +19,9 @@ import { HttpClientModule } from "@angular/common/http";
     BrowserAnimationsModule,
     MatButtonModule,
     HttpClientModule,
-    
   ],
   declarations: [AppComponent, HelloComponent, SafePipe, FilterPipe],
   bootstrap: [AppComponent],
-  providers: []
+  providers: [],
 })
 export class AppModule {}
