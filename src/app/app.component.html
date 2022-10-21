@@ -32,3 +32,6 @@
 <button *ngIf="video" (click)="takePhoto()" type="button">Click</button>
 {{ currentDate | date:"medium"}} <br>
 {{ utcDate | date:"medium"}}
+<br>
+{{"Ashish" | customPurePipe}}
+{{"Ashish" | customImpurePipe}}

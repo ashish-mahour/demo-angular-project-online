@@ -9,6 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
+import { CustomImpurePipePipe } from '../custom-impure-pipe.pipe';
+import { CustomPurePipePipe } from './custom-pure-pipe.pipe';
 
 @NgModule({
   imports: [
@@ -20,7 +22,14 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     HttpClientModule,
   ],
-  declarations: [AppComponent, HelloComponent, SafePipe, FilterPipe],
+  declarations: [
+    AppComponent,
+    HelloComponent,
+    SafePipe,
+    FilterPipe,
+    CustomImpurePipePipe,
+    CustomPurePipePipe,
+  ],
   bootstrap: [AppComponent],
   providers: [],
 })
