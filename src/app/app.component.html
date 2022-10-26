@@ -1,37 +1,57 @@
-<div class="main-div-animation" fxLayout="column" fxLayoutAlign="center center" *ngIf="minutes">
-	<div class="cssload-thecube">
-		<div class="cssload-cube cssload-c1"></div>
-		<div class="cssload-cube cssload-c2"></div>
-		<div class="cssload-cube cssload-c4"></div>
-		<div class="cssload-cube cssload-c3"></div>
-	</div>
-	<br>
-	<span class="anim-loading-title"><b>Loading...</b></span>
+<div
+  class="main-div-animation"
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  *ngIf="minutes"
+>
+  <div class="cssload-thecube">
+    <div class="cssload-cube cssload-c1"></div>
+    <div class="cssload-cube cssload-c2"></div>
+    <div class="cssload-cube cssload-c4"></div>
+    <div class="cssload-cube cssload-c3"></div>
+  </div>
+  <br />
+  <span class="anim-loading-title"><b>Loading...</b></span>
 </div>
 <p class="count-time" *ngIf="minutes && seconds">
-	{{minutes}} : {{seconds}}
+  {{ minutes }} : {{ seconds }}
 </p>
 <p class="count-time" *ngIf="minutesZone && secondsZone">
-	{{minutesZone}} : {{secondsZone}}
+  {{ minutesZone }} : {{ secondsZone }}
 </p>
-<div (swipe)="onPress($event, element)" #element
-	[@slideAnimation]="{value: changeState ? 'slideX': '', params: {transformXValue: slideLeft}}">
-	<hello name="{{ name }}">
-	</hello>
+<div
+  (swipe)="onPress($event, element)"
+  #element
+  [@slideAnimation]="{
+    value: changeState ? 'slideX' : '',
+    params: { transformXValue: slideLeft }
+  }"
+>
+  <hello name="{{ name }}"> </hello>
 </div>
 <div>
-	<input type="text" placeholder="Enter country? " [(ngModel)]="input" style="width:80%">
-	<div style="position: absolute;width:81%;background: rgba(0, 0, 0);">
-		<div style="cursor: pointer;color:white;border:1px; border-style:solid; border-color:black"
-			*ngFor="let o of obj | filter : input" (click)="input = o">
-			{{o}}
-		</div>
-	</div>
+  <input
+    type="text"
+    placeholder="Enter country? "
+    [(ngModel)]="input"
+    style="width:80%"
+  />
+  <div style="position: absolute;width:81%;background: rgba(0, 0, 0);">
+    <div
+      style="cursor: pointer;color:white;border:1px; border-style:solid; border-color:black"
+      *ngFor="let o of obj | filter: input"
+      (click)="input = o"
+    >
+      {{ o }}
+    </div>
+  </div>
 </div>
 <canvas *ngIf="video" id="canvas1"></canvas>
 <button *ngIf="video" (click)="takePhoto()" type="button">Click</button>
-{{ currentDate | date:"medium"}} <br>
-{{ utcDate | date:"medium"}}
-<br>
-{{"Ashish" | customPurePipe}}
-{{"Ashish" | customImpurePipe}}
+{{ currentDate | date: 'medium' }} <br />
+{{ utcDate | date: 'medium' }}
+<br />
+{{ 'Ashish' | customPurePipe }}
+{{ 'Ashish' | customImpurePipe }}
+<br />
+{{ timer }}

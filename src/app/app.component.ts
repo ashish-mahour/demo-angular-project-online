@@ -58,6 +58,7 @@ export class AppComponent implements OnInit {
   slideLeft: number = 0;
   video: HTMLVideoElement;
   transformXValue: number = 200;
+  timer: string = null;
 
   constructor(private http: HttpClient, private zone: NgZone) {}
 
@@ -67,6 +68,11 @@ export class AppComponent implements OnInit {
     console.log(Intl.Collator().resolvedOptions());
     const key = 116;
     console.log(String.fromCharCode(key), 'XYZ');
+    setInterval(() => {
+      this.zone.run(() => {
+        this.timer = new Date().toISOString();
+      });
+    }, 500);
   }
 
   samlParseToJSON() {
