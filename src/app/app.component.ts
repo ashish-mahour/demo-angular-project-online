@@ -59,6 +59,9 @@ export class AppComponent implements OnInit {
   video: HTMLVideoElement;
   transformXValue: number = 200;
   timer: string = null;
+  data: any = {
+    name: 'Name',
+  };
 
   constructor(private http: HttpClient, private zone: NgZone) {}
 
@@ -68,11 +71,11 @@ export class AppComponent implements OnInit {
     console.log(Intl.Collator().resolvedOptions());
     const key = 116;
     console.log(String.fromCharCode(key), 'XYZ');
-    setInterval(() => {
-      this.zone.run(() => {
-        this.timer = new Date().toISOString();
-      });
-    }, 500);
+    // setInterval(() => {
+    //   this.zone.run(() => {
+    //     this.timer = new Date().toISOString();
+    //   });
+    // }, 500);
   }
 
   samlParseToJSON() {

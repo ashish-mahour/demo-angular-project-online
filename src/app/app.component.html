@@ -55,3 +55,7 @@
 {{ 'Ashish' | customImpurePipe }}
 <br />
 {{ timer }}
+<div *ngIf="data">
+  <div *ngIf="data.type?.length">Type</div>
+  <div *ngIf="data.name">{{ data.name }}</div>
+</div>
