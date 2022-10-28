@@ -14,17 +14,17 @@ import * as pako from 'pako';
 import * as saml2json from 'saml2json';
 import { AnyAaaaRecord } from 'node:dns';
 
-const systemConsole = console.log;
-console.log = (message, ...data: any) => {
-  if (typeof message === 'string') {
-    systemConsole(
-      new Date().toISOString() + ` ${message}`,
-      data.map((x) => x).join(',')
-    );
-  } else {
-    systemConsole(new Date().toISOString(), message, data);
-  }
-};
+// const systemConsole = console.log;
+// console.log = (message, ...data: any) => {
+//   if (typeof message === 'string') {
+//     systemConsole(
+//       new Date().toISOString() + ` ${message}`,
+//       data.map((x) => x).join(',')
+//     );
+//   } else {
+//     systemConsole(new Date().toISOString(), message, data);
+//   }
+// };
 
 @Component({
   selector: 'my-app',
@@ -76,6 +76,8 @@ export class AppComponent implements OnInit {
     //     this.timer = new Date().toISOString();
     //   });
     // }, 500);
+    const date = new Date();
+    console.log(date.toLocaleString("en-US", {}));
   }
 
   samlParseToJSON() {
