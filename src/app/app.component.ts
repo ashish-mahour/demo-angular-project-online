@@ -76,8 +76,16 @@ export class AppComponent implements OnInit {
     //     this.timer = new Date().toISOString();
     //   });
     // }, 500);
-    const date = new Date();
-    console.log(date.toLocaleString("en-US", {}));
+    const date = new Date('2022-11-6');
+    console.log(date.toLocaleString('en-US', {}));
+    console.log(
+      Intl.DateTimeFormat('en', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+      }).formatToParts()
+    );
   }
 
   samlParseToJSON() {
