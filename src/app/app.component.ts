@@ -66,26 +66,31 @@ export class AppComponent implements OnInit {
   constructor(private http: HttpClient, private zone: NgZone) {}
 
   ngOnInit() {
-    console.log(Intl.DateTimeFormat().resolvedOptions());
-    console.log(Intl.NumberFormat().resolvedOptions());
-    console.log(Intl.Collator().resolvedOptions());
-    const key = 116;
-    console.log(String.fromCharCode(key), 'XYZ');
+    const arr = [0, 1, 2, 3, 4, 5, 6];
+    const start = 5;
+    const end = 0;
+    // this.test()
+    // this.samlParseToJSON()
+    // console.log(Intl.DateTimeFormat().resolvedOptions());
+    // console.log(Intl.NumberFormat().resolvedOptions());
+    // console.log(Intl.Collator().resolvedOptions());
+    // const key = 116;
+    // console.log(String.fromCharCode(key), 'XYZ');
     // setInterval(() => {
     //   this.zone.run(() => {
     //     this.timer = new Date().toISOString();
     //   });
     // }, 500);
-    const date = new Date('2022-11-6');
-    console.log(date.toLocaleString('en-US', {}));
-    console.log(
-      Intl.DateTimeFormat('en', {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        hour: '2-digit',
-      }).formatToParts()
-    );
+    // const date = new Date('2022-11-6');
+    // console.log(date.toLocaleString('en-US', {}));
+    // console.log(
+    //   Intl.DateTimeFormat('en', {
+    //     year: 'numeric',
+    //     month: '2-digit',
+    //     day: '2-digit',
+    //     hour: '2-digit',
+    //   }).formatToParts()
+    // );
   }
 
   samlParseToJSON() {
